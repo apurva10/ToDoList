@@ -41,10 +41,13 @@ input.addEventListener("keypress", addListAfterKeypress);
 btnRemove.addEventListener("click", afterRemoveClick);
 
 function afterRemoveClick(){
+
 	for(var i=0; i<listLi.length; i++){
-		if(input.value === listLi[i].innerHTML)
+		
+		if(input.value.toLowerCase() === listLi[i].childNodes[0].nodeValue.trim().toLowerCase())
 		{
 			listLi[i].remove();
+			break;
 		}
 	}
 }
@@ -55,7 +58,7 @@ for(var i=0; i<listLi.length; i++){
 
 function afterLiClick(id){
 	
-	if(id.target.innerHTML === "del")
+	if(id.target.nodeName === "BUTTON")
 	{
 		id.target.addEventListener("click", removeItem(id));
 	}
